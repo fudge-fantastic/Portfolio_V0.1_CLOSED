@@ -11,5 +11,5 @@ def about(request):
 def projects(request):
     return render(request, "projects.html")
 
-def contact(request):
-    return render(request, "contact.html")
+def connect(request):
+    return render(request, "connect.html")
