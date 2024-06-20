@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %}</title>
+
+    <!-- Link to external CSS libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Link to your local CSS file -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- Quicksand Font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap">
+    
+    <!-- Tailwind CSS CDN and Daisy UI CDN (only for development, consider using a local copy for production) -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            font-size: bold;
+            background-color: #212529; 
+        }
+
+        .nav-link-hover:hover {
+            opacity: 0.9;
+        }
+
+        .nav li {
+            margin-right: 30px; 
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap');
+    </style>
+
+</head>
+
+<body class="bg-dark text-white">
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4  border-bottom">        
+            <div class="col-md-3 mb-2 mb-md-0">
+               <h1 style="font-size: xx-large; font-weight: 600;">BlueSalt</h1> 
+            </div>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0", style="font-weight: 500; font-size:15px;">
+                <li><a href="/" class="nav-link px-2 link-secondary text-white nav-link-hover">Home</a></li>
+                <li><a href="/about" class="nav-link px-2 link-secondary text-white nav-link-hover">About Me</a></li>
+                <li><a href="/projects" class="nav-link px-2 link-secondary text-white nav-link-hover">Projects</a></li>
+                <li><a href="/contact" class="nav-link px-2 link-secondary text-white nav-link-hover">Contact</a></li>
+            </ul>
+
+            <div class="col-md-3 text-end"></div>
+        </header>
+    </div>
+
+    {% block body %}{% endblock body %}
+
+    <!-- Footer Section -->
+    <footer class="text-white body-font h-100vh">
+        <div class="container px-5 py-8 mx-auto flex items-end justify-between sm:flex-row flex-col">
+            <span class="text-3xl font-medium text-white font-caveat mt-1">BlueSalt</span>
+            <p class="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-1">
+                © 2023 bluesalt —<a href="mailto:adi.pandagle@gmail.com" class="text-white ml-1 font-medium" rel="noopener noreferrer" target="_blank">adi.pandagle@gmail.com</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                <a href="#" class="text-gray-500" target="_blank">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        class="w-5 h-5" viewBox="0 0 24 24">
+                        <path
+                            d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="ml-3 text-gray-500" target="_blank">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        class="w-5 h-5" viewBox="0 0 24 24">
+                        <path
+                            d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/fudge_fantastic/" class="ml-3 text-gray-500" target="_blank">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                        <path
+                            d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/aaditya-pandagle-0aa748238/" class="ml-3 text-gray-500" target="_blank">
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path stroke="none"
+                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                        </path>
+                        <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                    </svg>
+                </a>
+            </span>
+        </div>
+    </footer>
+</body>
+</html>

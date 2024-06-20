@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portfolio</title>
-    </head>
+{% block title %}Bluesalt{% endblock title %}
 
-    <body>
-        <h1>Portfolio Demo</h1>
-    </body>
+{% block body %}
 
-</html>
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h2 style="color: aquamarine;font-weight: 500;" class="mb-1">What the fuck is Oatmeal?</h2>
+        <h1 style="color: rgb(253, 253, 253); font-size:40px; font-weight:500;">Welcome to the Home Page!</h1>
+        <p style="color: white; margin-top: 10px;" class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+      </div>
+  </section>
+
+{% endblock body %}

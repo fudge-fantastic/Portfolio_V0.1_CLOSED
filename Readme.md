@@ -7,7 +7,6 @@ When browser requests the URL, following steps are taken place:
 - The __view__ then sends the data to a specified template in the template folder.
 - The template contains HTML and Django tags, and with the data it returns finished HTML content back to the browser.
 
----
 
 ## Steps
 - Create Venv
@@ -92,3 +91,9 @@ If your portfolio requires dynamic content or data storage, use:
 python manage.py makemigrations
 python manage.py migrate
 ```
+
+---
+
+### Django txt
+1. Create a base.html file and write the code for the header (NavBar) and footer.
+2. Make sure you have installed the django txt
