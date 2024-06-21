@@ -5,35 +5,63 @@
 {% block body %}
 
 <section class="body-font">
-  <div class="container px-10 py-10 mx-auto flex flex-wrap items-center">
+  <div class="container px-10 py-5 mx-auto flex flex-wrap items-center">
       <!-- Left Column: Content -->
-      <div class="lg:w-1/2 w-full mb-10 lg:mb-0">
+      <div class="lg:w-3/5 w-full mb-10 lg:mb-0">
           <div class="flex flex-col text-center w-full mb-20">
-              <h2 style="color: aquamarine;font-weight: 500;" class="mb-1 text-left">What the fuck is Oatmeal?</h2>
-              <h1 style="color: rgb(253, 253, 253); font-size:44px; font-weight:500;" class="text-left">Welcome to the Home Page!</h1>
-              <p style="color: white; margin-top: 10px;" class="text-left">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+              <h1 style="color: rgb(253, 253, 253); font-size:36px; font-weight:500;" class="text-left pb-4">Welcome to the Home Page People!</h1>
+              <h1 style="color: rgb(253, 253, 253); font-size:28px; font-weight:500;" class="text-left">I'm <span style="color: aquamarine;">Aaditya Pandagle</span>, a part-time human,</h1>
+              <h1 style="color: rgb(253, 253, 253); font-size:28px; font-weight:500;" class="text-left pb-4">and a full-time <span style="color: aquamarine;" class="auto-type"></span></h1>
+              <p style="color: white; margin-top: 10px;" class="text-left">A tech enthusiast hailing from Bombay but happily stranded in Pune. I dabble in code—well, maybe more than dabble. My curiosity has a knack for leading me astray, think of me as the adventurous coder who's always one click away from unleashing chaos ⚆ _ ⚆</p>
           </div>
       </div>
       <!-- Right Column: Animated SVG -->
-      <div class="lg:w-1/2 w-full">
-          <div id="animation-container" class="mx-auto lg:ml-10" style="transform: scaleX(-1);"></div>
+      <div class="lg:w-2/5 w-full">
+          <div id="animation-container" class="mx-auto lg:ml-10 w-[500px] h-[500px]" style="transform: scaleX(-1);"></div>
       </div>
   </div>
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.7/lottie.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-      var animationContainer = document.getElementById('animation-container');
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-      bodymovin.loadAnimation({
-          container: animationContainer,
-          renderer: 'svg',
-          loop: true,
-          autoplay: true,
-          path: '../static/bird_animation.json' // Replace with the path to your animated SVG file
-      });
-  });
-</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var animationContainer = document.getElementById('animation-container');
+  
+        bodymovin.loadAnimation({
+            container: animationContainer,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '../static/bird_animation.json' // Replace with the path to your animated SVG file
+        });
+  
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+  
+        var professions = ["Data Scientist", "Machine Learning Engineer", "Deep Learning Engineer", "AI/MLOps Engineer", "Potato Debugger", "Script Junkie", "Runtime Wrecker", "Memory Leak Bandit, lol", "Git Grimlin"];
+        shuffle(professions);
+  
+        var typed = new Typed(".auto-type", {
+            strings: professions,
+            typeSpeed: 80,
+            backSpeed: 40,
+            backDelay: 2500,
+            startDelay: 750,
+            loop: true
+        });
+    });
+  </script>
+
+<span class="inline-block h-1 w-full rounded bg-emerald-300 mt-0 mb-6"></span>
 
 {% endblock body %}
+
+
+<!-- integrate new animation cat_animation -->
