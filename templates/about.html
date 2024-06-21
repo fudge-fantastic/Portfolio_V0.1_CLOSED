@@ -2,25 +2,209 @@
 
 {% block title %}About me!{% endblock title %}
 
-
 {% block body %}
 
 <style>
     h2 {
         color: white;
     }
+    .small-height {
+        height: auto; /* Adjust the height as needed */
+    }
+    .icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #404040;
+        border-radius: 8px; /* Add border radius for rounded corners */
+        padding: 14px;
+        overflow: hidden; /* Prevents content from overflowing */
+        flex-wrap: nowrap; /* Prevent wrapping */
+    }
+    .icon {
+        height: 40px; /* Adjust icon size */
+        margin-right: 10px; /* Space between icon and text */
+        flex-shrink: 0; /* Prevent the icon from shrinking */
+    }
+    .icon-text {
+        font-size: 17px; /* Text size */
+        font-weight: 550;
+        padding: 5px;
+        overflow: hidden; /* Hide overflow text */
+        text-overflow: ellipsis; /* Add ellipsis for overflow text */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
 </style>
 
 <section class="body-font mt-0">
-    <div class="container-2xl px-0 py-24 mx-auto">
-      <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
-        <h3 style="color: aquamarine;font-weight: 500; font-size: medium;" class="mb-1">Who am I? What am I? Why am I?</h3>
-        <p style="text-align:center; color: white;" class="leading-relaxed text-lg ">"Greetings! I'm Aaditya, a passionate tech enthusiast focusing on AI/ML and creating optimized solutions using MLOps. I'm proficient in Python and SQL for data wrangling and analysis, with a working knowledge of C++ and Java for broader programming needs. Additionally, I have hands-on experience with Amazon Web Services (AWS)"</p>
-        <span class="inline-block h-1 w-10 rounded bg-emerald-400 mt-8 mb-6"></span>
-        <h2 class="font-medium title-font tracking-wider text-sm">AADITYA PANDAGLE</h2>
-        <p style="color: white;">Data Science | MLOps | AI/DL & Machine Learning</p>
+    <div class="container-2xl px-5 pt-12 pb-0 mx-auto">
+        <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
+            <p style="text-align:center; color: white;" class="leading-relaxed text-lg ">"Greetings! I'm Aaditya, a passionate tech enthusiast focusing on AI/ML and creating optimized solutions using MLOps. I'm proficient in Python and SQL for data wrangling and analysis, with a working knowledge of C++ and Java for broader programming needs. Additionally, I have hands-on experience with Amazon Web Services (AWS)"</p>
+            <span class="inline-block h-1 w-10 rounded bg-emerald-400 mt-8 mb-6"></span>
+        </div>
+    </div>
+</section>
+
+<section class="body-font pb-20">
+    <div class="container px-5 mx-auto">
+        <div class="container px-5 pt-4 mx-auto">
+            <div class="flex flex-col text-center w-full mb-4">
+                <h1 style="color: rgb(253, 253, 253); font-size:40px; font-weight:600;">My Skills and Hobbies</h1>
+                <h2 style="margin-top: 10px;" class="lg:w-2/3 mx-auto leading-relaxed text-2xl font-semibold">Programming Languages</h2>
+            </div>
+        </div>
+        <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-4 -mx-2">
+            <div class="p-2 sm:w-1/4 w-1/2">
+                <div class="icon-container small-height">
+                    <img src="../static/python.svg" alt="Python Icon" class="icon">
+                    <span class="icon-text">Python</span>
+                </div>
+            </div>
+            <div class="p-2 sm:w-1/4 w-1/2">
+                <div class="icon-container small-height">
+                    <img src="../static/sql.svg" alt="SQL Icon" class="icon">
+                    <span class="icon-text">SQL</span>
+                </div>
+            </div>
+            <div class="p-2 sm:w-1/4 w-1/2">
+                <div class="icon-container small-height">
+                    <img src="../static/cpp.svg" alt="C++ Icon" class="icon">
+                    <span class="icon-text">C++</span>
+                </div>
+            </div>
+            <div class="p-2 sm:w-1/4 w-1/2">
+                <div class="icon-container small-height">
+                    <img src="../static/java.svg" alt="Java Icon" class="icon">
+                    <span class="icon-text">Java</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2nd row -->
+        <div class="flex flex-col text-center w-full mb-4">
+            <h2 style="margin-top: 10px;" class="lg:w-2/3 mx-auto leading-relaxed text-2xl font-semibold">Web Development</h2>
+        </div>
+      
+        <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+          <div class="p-2 sm:w-1/4 w-1/2">
+              <div class="icon-container small-height">
+                  <img src="../static/html.svg" alt="HTML Icon" class="icon">
+                  <span class="icon-text">HTML</span>
+              </div>
+          </div>
+          <div class="p-2 sm:w-1/4 w-1/2">
+              <div class="icon-container small-height">
+                  <img src="../static/css.svg" alt="CSS Icon" class="icon">
+                  <span class="icon-text">CSS</span>
+              </div>
+          </div>
+          <div class="p-2 sm:w-1/4 w-1/2">
+              <div class="icon-container small-height">
+                  <img src="../static/javascript.svg" alt="JavaScript Icon" class="icon">
+                  <span class="icon-text">JavaScript</span>
+              </div>
+          </div>
+          <div class="p-2 sm:w-1/4 w-1/2">
+              <div class="icon-container small-height">
+                  <img src="../static/tailwind.svg" alt="Tailwind Icon" class="icon">
+                  <span class="icon-text">Tailwind</span>
+              </div>
+          </div>
+        </div>
+
+      <!-- 3rd row -->
+      <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+        <div class="p-2 sm:w-1/4 w-1/2">
+            <div class="icon-container small-height">
+                <img src="../static/flask.svg" alt="HTML Icon" class="icon">
+                <span class="icon-text">Flask</span>
+            </div>
+        </div>
+        <div class="p-2 sm:w-1/4 w-1/2">
+            <div class="icon-container small-height">
+                <img src="../static/fastapi.svg" alt="CSS Icon" class="icon">
+                <span class="icon-text">FastAPI</span>
+            </div>
+        </div>
+        <div class="p-2 sm:w-1/4 w-1/2">
+            <div class="icon-container small-height">
+                <img src="../static/django.svg" alt="JavaScript Icon" class="icon">
+                <span class="icon-text">Django</span>
+            </div>
+        </div>
+        <div class="p-2 sm:w-1/4 w-1/2">
+            <div class="icon-container small-height">
+                <img src="../static/data_structures.svg" alt="Tailwind Icon" class="icon">
+                <span class="icon-text">Data Structures</span>
+            </div>
+        </div>
+    </div>
+
+      <!-- 4th row -->
+      <div class="flex flex-col text-center w-full mb-4">
+          <h2 style="margin-top: 10px;" class="lg:w-2/3 mx-auto leading-relaxed text-2xl font-semibold">Data Science</h2>
+      </div>
+    
+      <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+        <div class="p-2 sm:w-1/4 w-1/2">
+            <div class="icon-container small-height">
+                <img src="../static/data-analytics.svg" alt="HTML Icon" class="icon">
+                <span class="icon-text">Data Analysis</span>
+            </div>
+        </div>
+        <div class="p-2 sm:w-1/4 w-1/2">
+            <div class="icon-container small-height">
+                <img src="../static/machine_learning.svg" alt="CSS Icon" class="icon">
+                <span class="icon-text">Machine Learning</span>
+            </div>
+        </div>
+        <div class="p-2 sm:w-1/4 w-1/2">
+            <div class="icon-container small-height">
+                <img src="../static/deep_learning.svg" alt="JavaScript Icon" class="icon">
+                <span class="icon-text">Deep Learning</span>
+            </div>
+        </div>
+        <div class="p-2 sm:w-1/4 w-1/2">
+            <div class="icon-container small-height">
+                <img src="../static/gen_ai.svg" alt="Tailwind Icon" class="icon">
+                <span class="icon-text">Generative AI</span>
+            </div>
+        </div>
+      </div>
+    
+
+      <!-- 4th row -->
+      <div class="flex flex-col text-center w-full mb-4">
+        <h2 style="margin-top: 10px;" class="lg:w-2/3 mx-auto leading-relaxed text-2xl font-semibold">ML/AI Operations</h2>
+    </div>
+  
+    <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+      <div class="p-2 sm:w-1/4 w-1/2">
+          <div class="icon-container small-height">
+              <img src="../static/mlflow.svg" alt="HTML Icon" class="icon">
+              <span class="icon-text">MLFlow</span>
+          </div>
+      </div>
+      <div class="p-2 sm:w-1/4 w-1/2">
+          <div class="icon-container small-height">
+              <img src="../static/packaging.svg" alt="CSS Icon" class="icon">
+              <span class="icon-text">Packaging</span>
+          </div>
+      </div>
+      <div class="p-2 sm:w-1/4 w-1/2">
+          <div class="icon-container small-height">
+              <img src="../static/git.svg" alt="JavaScript Icon" class="icon">
+              <span class="icon-text">Version Control</span>
+          </div>
+      </div>
+      <div class="p-2 sm:w-1/4 w-1/2">
+          <div class="icon-container small-height">
+              <img src="../static/docker.svg" alt="Tailwind Icon" class="icon">
+              <span class="icon-text">Docker</span>
+          </div>
       </div>
     </div>
+  </div>
 </section>
 
 {% endblock body %}
