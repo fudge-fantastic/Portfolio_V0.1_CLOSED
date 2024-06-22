@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Contact me :){% endblock title %}
+{% block title %}Connect me :){% endblock title %}
 
 
 {% block body %}
 
+<!-- Introduction 1 -->
 <style>
   h2 {
       color: white;
@@ -30,10 +31,12 @@
     </div>
 </section>
 
+<!-- Animation Section -->
 <section id="animation-container"></section>
 
+<!-- Links Section -->
 <section style="color: white" class="body-font">
-    <div class="container px-5 py-16 mx-auto">
+    <div class="container px-5 py-10 mx-auto">
       <div class="flex flex-col text-center w-full mb-20">
         <h3 style="color: #7fffd4;font-weight: 500; font-size: medium;" class="mb-1">Explore my Misery</h3>
         <h1 style="font-size: xx-large; color: white;" class="font-medium title-font">You can find me on these platforms!</h1>
@@ -133,8 +136,9 @@
     </div>
 </section>
 
+<!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.7/lottie.min.js"></script>
-  <script>
+<script>
       document.addEventListener('DOMContentLoaded', function () {
           var animationContainer = document.getElementById('animation-container');
 
@@ -148,4 +152,86 @@
       });
 </script>
 
+
+<style>
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    background-color: #303a4b;
+    color: white;
+    border: 1px solid #212529;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: border-color 0.6s ease;
+    font-weight: 600;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border-color: #7fffd4;
+  }
+
+  label {
+    color: #7fffd4;
+    font-weight: 600;
+    font-size: large;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  button {
+    color: #1d1d1d;
+    font-weight: bold;
+    background-color: #7fffd4;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #38ffbc;
+  }
+</style>
+
+<section class="body-font relative">
+  <div class="container px-5 pt-10 pb-14 mx-auto">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 style="font-size: 2rem; color: white;" class="font-medium title-font">Contact Me <span style="color: #7fffd4;">•ᴗ•</span></h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-white">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify.</p>
+    </div>
+    <div class="lg:w-1/2 md:w-2/3 mx-auto">
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 w-1/2">
+          <div class="relative">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="rounded focus:ring-2 focus:ring-emerald-300 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+        </div>
+        <div class="p-2 w-1/2">
+          <div class="relative">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="rounded focus:ring-2 focus:ring-emerald-300 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+        </div>
+        <div class="p-2 w-full">
+          <div class="relative">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="rounded focus:ring-2 focus:ring-emerald-300 h-32 text-base outline-none py-2 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+          </div>
+        </div>
+        <div class="p-2 w-full">
+          <button class="flex mx-auto border-0 py-2 px-8 focus:outline-none rounded text-lg">Send it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 {% endblock body %}
+
+<!-- Contact me left and add more links-->
