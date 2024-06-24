@@ -1,0 +1,1 @@
+<!--(flex items-center justify-between): This ensures that the children elements (h1 and dropdown) are aligned horizontally (flex) and centered vertically (items-center), with space distributed between them (justify-between). -->

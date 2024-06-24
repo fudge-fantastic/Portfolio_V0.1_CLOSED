@@ -13,3 +13,42 @@ https://lottiefiles.com/ego
 2. Add mroe info in the about me
 3. add working projects
 4. Orientation Fix
+
+
+Portfolio/
+├── Portfolio/
+│   ├── .env
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── fastapi_api/
+│   ├── .env
+│   └── main.py
+├── projects/
+│   ├── migrations
+│   ├── admins.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py 
+├── static/
+│   └── icons and svgs
+├── templates/
+│   ├── deep_learning/
+│   │   └── deep_learning.html
+│   ├── machine_learning/
+│   │   └── machine_learning.html
+│   ├── generative_ai/
+│   │   └── resume_analyzer/
+│   │       └── resume_analyzer.html
+│   ├── about.html
+│   ├── base.html
+│   ├── connect.html
+│   ├── contact.html
+│   ├── index.html
+│   └── projects.html
+├── db.sqlite3
+└── manage.py

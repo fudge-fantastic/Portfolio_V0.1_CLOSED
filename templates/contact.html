@@ -51,15 +51,13 @@
     <div class="container px-5 pt-4 pb-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-12">
             <h1 style="font-size: 2rem; color: white;" class="font-medium title-font">Contact Me <span style="color: #7fffd4;">•ᴗ•</span></h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-white">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify.</p>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-white">Don't leave me hanging—my inbox is like a garden, and it's craving your witty weeds.</p>
         </div>
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
             {% if messages %}
                 {% for message in messages %}
-                    <div class="bg-green-500 text-white p-4 mb-6 rounded">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2l4-4M7 12l2 2m4-4l-2-2M7 16l2 2m4-4l-2-2" />
-                        </svg>
+                    <div class="bg-emerald-300 text-gray-900 font-bold text-md p-4 mb-6 rounded flex items-center">
+                        <img src="../static/check.svg" alt="check" class="h-8 w-8 mr-2">
                         {{ message }}
                     </div>
                 {% endfor %}
