@@ -23,11 +23,13 @@
             font-family: 'Quicksand', sans-serif;
             font-size: bold;
             background-color: #212529; 
+            min-height: 100vh;
         }
 
-        .nav-link-hover:hover {
+        /* Ensure nav-link-hover is more specific than other styles */
+        .nav .nav-link:hover {
             opacity: 0.9;
-            color: aquamarine;
+            color: aquamarine !important;
         }
 
         .nav li {
@@ -46,7 +48,7 @@
                <h1 style="font-size: xx-large; font-weight: 600;">BlueSalt</h1> 
             </div>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0", style="font-weight: 500; font-size:15px;">
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0", style="font-weight: 500; font-size:16px;">
                 <li><a href="/" class="nav-link px-2 link-secondary text-white nav-link-hover">Home</a></li>
                 <li><a href="/about" class="nav-link px-2 link-secondary text-white nav-link-hover">About Me</a></li>
                 <li><a href="/projects" class="nav-link px-2 link-secondary text-white nav-link-hover">Projects</a></li>
@@ -64,13 +66,47 @@
     <!-- Footer Section -->
     <footer class="text-white body-font h-100vh">
         <div class="container px-5 py-8 mx-auto flex items-end justify-between sm:flex-row flex-col">
-            <span class="text-3xl font-medium text-white font-caveat mt-1">BlueSalt</span>
-            <p class="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-1">
-                © 2024 bluesalt —<a href="mailto:adi.pandagle@gmail.com" class="text-white ml-1 font-medium" rel="noopener noreferrer" target="_blank">adi.pandagle@gmail.com</a>
+            <span class="text-3xl font-semibold text-white font-caveat mt-0 mb-1">BlueSalt</span>
+            <p class="text-md font-semibold text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-1">
+                <a href="{% url 'contact' %}" class="text-white ml-1 font-medium" rel="noopener noreferrer">
+                    <span style="color: aquamarine;">Click here</span> — If you wanna 
+                    <span class="footer-auto-type" style="color: aquamarine;"></span>
+                </a>
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                <!-- Social media links can go here -->
             </span>
         </div>
     </footer>
+
+    <!-- Scripts for animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.7/lottie.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var actions = ["get in touch", "chat!", "say hi!", "report an issue", "share a joke!", "ask a question"];
+            
+            // Shuffle the array
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+            
+            shuffle(actions);
+            
+            var typed = new Typed(".footer-auto-type", {
+                strings: actions,
+                typeSpeed: 80,
+                backSpeed: 30,
+                backDelay: 3000,
+                startDelay: 750,
+                loop: true
+            });
+        });
+    </script>
 </body>
 </html>

@@ -5,10 +5,11 @@ Make sure to paste the CDN for any UI library
 https://lottiefiles.com/animations/bkash-logo-loading-animation-2Ct21jeoIe?from=search
 
 # Users
-https://lottiefiles.com/eauuxvb8nq  ---user
-https://x.com/SepehrRadfar --user
-https://www.behance.net/animooxstudio21 --user
-https://lottiefiles.com/vxie3wbw6dy566ua
-https://lottiefiles.com/nky302kgozw15jh7
 https://lottiefiles.com/6h9dptmdy6
 https://lottiefiles.com/ego
+
+# TODO
+1. Fix the index containers
+2. Add mroe info in the about me
+3. add working projects
+4. Orientation Fix
