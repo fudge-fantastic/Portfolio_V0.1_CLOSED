@@ -1,0 +1,85 @@
+Here is a reorganized and structured version of the resume text:
+
+**Contact Information**
+
+Aaditya Pandagle
+Phone: +91 7972567926
+Email: [adi.pandagle@gmail.com](mailto:adi.pandagle@gmail.com)
+LinkedIn: [LinkedIn profile]
+Github: [Github profile]
+
+**Summary**
+Motivated and results-driven Data Scientist with expertise in MLOps and Generative AI, seeking a position in a dynamic organization. A portfolio of successful projects is available on GitHub, showcasing ability to analyze data, develop predictive models, and collaborate effectively within cross-functional teams.
+
+**Skills**
+
+**Machine Learning & Deep Learning**
+
+* Supervised Learning: Linear & Logistics Regression, SVM, Decision-Tree, and Ensembles
+* Unsupervised Learning: K-Means, Hierarchical Clustering, and Dimensionality Reduction-PCA
+* Neural Networks: ANN, CNN, and RNN
+* NLP and DL Frameworks: TensorFlow and Keras
+
+**Data Science**
+
+* Data Analysis & Visualization
+* Statistical Analysis & Modeling
+* Feature Engineering & Optimization Techniques
+
+**Web Development, MLOPs, and Programming Language**
+
+* MLflow, Packaging, Version Control (Git), Docker, AWS, Jenkins, Prometheus, and CI/CD Pipeline
+* Flask, FastAPI, Django, Data Structures & Algorithms (DSA), Python, and MySQL
+
+**Auxillary Skills**
+
+* Cloud (AWS)
+* Deep Learning (Fundamentals)
+* Packaging and Containerization
+* Version Control (git)
+* CI/CD (basics)
+* Large Language Model integration (Gemini and LLama)
+* Collaboration and Adaptability
+* Problem-solving and Inquisitive
+
+**Projects**
+
+**Machine Learning and Deep Learning**
+
+* Fraud Detection
+* Credit Risk Assessment
+* House Rent Prediction
+* Customer Discount Offering
+* American Sign Language Detection
+
+**Generative-AI**
+
+* OCR-Gemini
+* Resume-JD Analyzer
+* Query-Builder
+
+**Others**
+
+* MLOps Sandbox
+* Django Web-based Diabetes Prediction Model
+
+**Education**
+
+* Post-Graduation Program in Data Science and Analytics - Imarticus Learning (Pune) (2023 - 2024) (TBD)
+* Bachelor's in Business Administration (Computer Application) - Modern College of Commerce & Computer Studies; Savitribai Phule Pune University Affiliated. (2020 - 2023) - CGPA - 8.61
+* Senior Secondary School - PDEA's Shri Mhalsakant Vidyalaya & Jr. College. (2018 - 2020) - 55.69%
+* High School - S.P.M English Medium School, Nigdi-Pune. (2007 - 2018) - 69.00%
+
+**Certifications and Achievements**
+
+* Udemy: Python for Data Science and Machine Learning Bootcamp
+* Kaggle: Beginner and Intermediate Machine Learning
+* HackerRank: SQL Basic and Intermediate
+* Udemy: Python Data Structures and Algorithm
+* Udemy: Amazon Web Services - Solution Architect
+* Ranked 1st in chess competitions during academic journey
+
+**Languages**
+
+* English, Hindi, and Marathi (Native)
+* German and Japanese (Novice)

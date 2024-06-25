@@ -133,7 +133,7 @@ def review(request):
                 all_text = extract_text_from_docx(resume)
                 all_text = clean_text(all_text)
             else:
-                return HttpResponseBadRequest(UNSUPPORTED_FILE_TYPE)
+                return HttpResponseBadRequest("Unsupported file type. Please upload a PDF or DOCX file.")
 
             review_prompt = f'''Please review the following resume text and provide a detailed analysis. Start with scoring, highlight strengths, weaknesses, and areas for improvement:
                                 {all_text}'''
@@ -142,9 +142,11 @@ def review(request):
                 review = get_llama_assistance(review_prompt)
             elif selected_model == 'genai':
                 review = generate_text(review_prompt)
+            else:
+                return HttpResponseBadRequest("Invalid model selected.")
 
-            return JsonResponse({"review": review})
-
+            return HttpResponse(review)
+        
         except Exception as e:
             return HttpResponseBadRequest(str(e))
 
@@ -177,7 +179,7 @@ def ask_question(request):
 
     return HttpResponseBadRequest("Invalid request method.")
 
-def view_resume(request):
+def view_resume_content(request):
     if request.method == 'POST':
         resume = request.FILES.get('resume')
 

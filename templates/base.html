@@ -7,10 +7,6 @@
 
     <!-- Link to external CSS libraries -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-    <!-- Link to your local CSS file -->
-    <link href="styles.css" rel="stylesheet">
-    <link href="generative_ai/styles.css" rel="stylesheet">
 
     <!-- Quicksand Font from Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap">
@@ -18,6 +14,7 @@
     <!-- Tailwind CSS CDN and Daisy UI CDN (only for development, consider using a local copy for production) -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <style>
         body {
@@ -42,7 +39,10 @@
 
 </head>
 
+
+
 <body class="bg-dark text-white">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-1  border-bottom">        
             <div class="col-md-3 mb-2 mb-md-0">
@@ -83,7 +83,7 @@
     <!-- Scripts for animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.7/lottie.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var actions = ["get in touch, heh.", "chat!", "say hi!", "report an issue", "share a joke!", "ask a question", "hire me?", "connect"];

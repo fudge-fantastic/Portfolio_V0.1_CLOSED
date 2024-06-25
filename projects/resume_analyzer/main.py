@@ -1,7 +1,6 @@
 # projects/resume_analyzer/resume_analyzer.py
 import os
 import re
-import pdfplumber
 import docx
 from groq import Groq
 import google.generativeai as genai
