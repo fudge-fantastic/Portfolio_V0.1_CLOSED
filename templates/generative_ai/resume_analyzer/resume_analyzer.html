@@ -33,6 +33,7 @@
         border-radius: 0.5rem;
         margin-top: 1rem;
         overflow-wrap: break-word;
+        display: none; /* Initially hide the markdown display */
     }
 </style>
 
@@ -63,15 +64,13 @@
             <button style="color: aquamarine;" class="btn btn" onclick="compareResume()">Compare</button>
             <button style="color: aquamarine;" class="btn btn" onclick="reviewResume()">Review Resume</button>
             <button style="color: aquamarine;" class="btn btn" onclick="viewResumeContent()">View Resume Content</button>
-            <button style="color: aquamarine;" class="btn btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button id="copyButton" style="color: aquamarine; display: none;" class="btn btn" onclick="copyToClipboard()">Copy to Clipboard</button>
         </div>
         <div id="reviewMarkdown" class="markdown-display"></div>
     </div>
 </section>
 
-
-
-<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
     function toggleDropdown() {
         const dropdownContent = document.getElementById('modelDropdownOptions');
@@ -81,6 +80,7 @@
     function selectModel(model) {
         // Close dropdown when model is selected
         toggleDropdown(); 
+
         const modelDropdownButton = document.getElementById('modelDropdown');
         if (model === 'llama') {
             modelDropdownButton.textContent = 'Selected Model: LLama3';
@@ -127,7 +127,10 @@
         })
         .then(data => {
             // Display plain text response directly
-            displayPlainTextReview(data);
+            displayMarkdownReview(data);
+            // Show copy button and markdown display
+            document.getElementById('copyButton').style.display = 'inline-block';
+            document.getElementById('reviewMarkdown').style.display = 'block';
         })
         .catch(error => {
             console.error('Error:', error);
@@ -143,13 +146,13 @@
         // Implement your logic for copying content to clipboard here
     }
 
-    function displayPlainTextReview(plainTextContent) {
-        const reviewMarkdownDiv = document.getElementById('reviewMarkdown');
-        if (reviewMarkdownDiv) {
-            reviewMarkdownDiv.textContent = plainTextContent; // Display plain text directly
-        } else {
-            console.warn('Review markdown display area not found.');
-        }
+    function displayMarkdownReview(markdownContent) {
+    const reviewMarkdownDiv = document.getElementById('reviewMarkdown');
+    if (reviewMarkdownDiv) {
+        reviewMarkdownDiv.innerHTML = markdownContent; // Display Markdown content as HTML
+    } else {
+        console.warn('Review markdown display area not found.');
+    }
     }
 
     function getCookie(name) {

@@ -10,6 +10,8 @@ from projects.resume_analyzer.main import generate_text, get_llama_assistance, e
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse
 import pdfplumber
 import google.generativeai as genai
+from django.utils.html import mark_safe
+import markdown
 import os
 
 # NavBar
@@ -133,9 +135,9 @@ def review(request):
                 all_text = extract_text_from_docx(resume)
                 all_text = clean_text(all_text)
             else:
-                return HttpResponseBadRequest("Unsupported file type. Please upload a PDF or DOCX file.")
+                return HttpResponseBadRequest(UNSUPPORTED_FILE_TYPE)
 
-            review_prompt = f'''Please review the following resume text and provide a detailed analysis. Start with scoring, highlight strengths, weaknesses, and areas for improvement:
+            review_prompt = f'''Please review the following resume text and provide a detailed analysis. Start with scoring the resume:
                                 {all_text}'''
 
             if selected_model == 'llama':
@@ -145,7 +147,7 @@ def review(request):
             else:
                 return HttpResponseBadRequest("Invalid model selected.")
 
-            return HttpResponse(review)
+            return JsonResponse({'review': review})
         
         except Exception as e:
             return HttpResponseBadRequest(str(e))
@@ -186,29 +188,31 @@ def view_resume_content(request):
         if not resume:
             return HttpResponseBadRequest("Please upload a resume (PDF or DOCX) to view.")
 
-        if resume.name.endswith('.pdf'):
-            with pdfplumber.open(resume) as pdf:
-                all_text = "\n\n".join(page.extract_text() for page in pdf.pages if page.extract_text())
-            all_text = clean_text(all_text)
-            structured_text = get_llama_assistance(f'''I need your help to organize and structure the Resume text, don't mention your role or what task you did:
-                                                        {all_text}''')
-        elif resume.name.endswith('.docx'):
-            all_text = extract_text_from_docx(resume)
-            all_text = clean_text(all_text)
-            structured_text = get_llama_assistance(f'''I need your help to organize and structure the Resume text, don't mention your role or what task you did:
-                                                        {all_text}''')
-        else:
-            return HttpResponseBadRequest("Unsupported file format. Please upload a PDF or DOCX file.")
+        try:
+            if resume.name.endswith('.pdf'):
+                with pdfplumber.open(resume) as pdf:
+                    all_text = "\n\n".join(page.extract_text() for page in pdf.pages if page.extract_text())
+                all_text = clean_text(all_text)
+                structured_text = get_llama_assistance(f"I need your help to organize and structure the Resume text, don't mention your role or what task you did:\n{all_text}")
+            elif resume.name.endswith('.docx'):
+                all_text = extract_text_from_docx(resume)
+                all_text = clean_text(all_text)
+                structured_text = get_llama_assistance(f"I need your help to organize and structure the Resume text, don't mention your role or what task you did:\n{all_text}")
+            else:
+                return HttpResponseBadRequest("Unsupported file format. Please upload a PDF or DOCX file.")
 
-        # Save structured resume text to a file if needed
-        FILENAME = "structured_resume.txt"
-        with open(FILENAME, 'w') as f:
-            f.write(structured_text)
+            # Save structured resume text to a file
+            FILENAME = "structured_resume.txt"
+            with open(FILENAME, 'w') as f:
+                f.write(structured_text)
 
-        # Serve the file as a response
-        with open(FILENAME, 'r') as f:
-            response = HttpResponse(f.read(), content_type='text/plain')
-            response['Content-Disposition'] = f'attachment; filename="{FILENAME}"'
-        return response
+            # Serve the file as a response
+            with open(FILENAME, 'r') as f:
+                response = HttpResponse(f.read(), content_type='text/plain')
+                response['Content-Disposition'] = f'attachment; filename="{FILENAME}"'
+            return response
+
+        except Exception as e:
+            return HttpResponseBadRequest(f"Error processing the resume: {str(e)}")
 
     return HttpResponseBadRequest("Invalid request method.")
