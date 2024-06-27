@@ -20,6 +20,9 @@ urlpatterns = [
     path("projects/generative_ai/resume_analyzer/ask_question/", views.ask_question, name="ask_question"),
     path("projects/generative_ai/resume_analyzer/view_resume_content/", views.view_resume_content, name="view_resume_content"),
     
+    path("projects/generative_ai/query_builder/", views.query_builder, name="query_builder"),
+    path("projects/generative_ai/query_builder/get_query/", views.get_query, name="get_query"),
+    
     
     path("contact/", views.contact, name="contact"),
 ]

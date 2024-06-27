@@ -11,8 +11,15 @@ from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse
 import pdfplumber
 import google.generativeai as genai
 from django.utils.html import mark_safe
-import markdown
+from django.views.decorators.csrf import csrf_exempt
+import pandas as pd
 import os
+
+from projects.query_builder.main import get_llama_assistance_qb
+import json
+import logging
+import sqlite3
+from flask import jsonify
 
 # NavBar
 def index(request):
@@ -137,7 +144,7 @@ def review(request):
             else:
                 return HttpResponseBadRequest(UNSUPPORTED_FILE_TYPE)
 
-            review_prompt = f'''Please review the following resume text and provide a detailed analysis. Start with scoring the resume:
+            review_prompt = f'''Please review the following resume text and provide a detailed analysis. Start with scoring the resume, you can write massive responses:
                                 {all_text}'''
 
             if selected_model == 'llama':
@@ -147,11 +154,10 @@ def review(request):
             else:
                 return HttpResponseBadRequest("Invalid model selected.")
 
-            return JsonResponse({'review': review})
-        
+            return JsonResponse({'review': review}) # OR you can use return HttpResponse(review, content_type="text/plain") 
+
         except Exception as e:
             return HttpResponseBadRequest(str(e))
-
 
 def ask_question(request):
     if request.method == 'POST':
@@ -216,3 +222,42 @@ def view_resume_content(request):
             return HttpResponseBadRequest(f"Error processing the resume: {str(e)}")
 
     return HttpResponseBadRequest("Invalid request method.")
+
+
+def query_builder(request):
+    return render(request, "generative_ai/query_builder/query_builder.html")
+
+logger = logging.getLogger(__name__)
+
+@csrf_exempt
+def get_query(request):
+    if request.method == 'POST':
+        file = request.FILES.get('file')
+        query = request.POST.get('query')
+        
+        if file and query:
+            # Create a temporary SQLite database
+            conn = sqlite3.connect(':memory:')
+            df = pd.read_csv(file)
+            df.to_sql('data', conn, index=False, if_exists='replace')
+            
+            columns_info = df.dtypes.to_dict()
+            formatted_metadata = "\n".join([f"{col}: {dtype}" for col, dtype in columns_info.items()])
+            
+            # Get the SQL query from LLM
+            sql_query = get_llama_assistance_qb(query, formatted_metadata)
+            
+            try:
+                # Execute the SQL query
+                result_df = pd.read_sql_query(sql_query, conn)
+                conn.close()
+                
+                # Convert the result to JSON
+                result_json = result_df.to_json(orient='records')
+                
+                return JsonResponse({'result': json.loads(result_json)})
+            except Exception as e:
+                conn.close()
+                return JsonResponse({'error': str(e)}, status=400)
+    
+    return JsonResponse({'error': 'Invalid request'}, status=400)

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Query Builder{% endblock title %}
+
+{% block body %}
+<style>
+    .container-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: left;
+    }
+    .mt-1 {
+        margin-top: 0.25rem;
+    }
+    .mt-3 {
+        margin-top: 1rem;
+    }
+    .markdown-display {
+        background-color: #212529;
+        color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        overflow-wrap: break-word;
+    }
+</style>
+
+<section class="body-font">
+    <div style="background-color: #404040;" class="container mx-auto px-4 py-8 mt-10 mb-10 rounded-lg">
+        <div class="container-flex">
+            <h1 class="title-font text-4xl font-medium text-white">Query Builder</h1>
+        </div>
+        <div class="mt-4">
+            <p class="text-white">Choose a <span style="color: aquamarine; font-weight: bold;">CSV</span> File only:</p>
+        </div>
+        <div class="container-flex mt-1">
+            <input id="file-input" type="file" style="background-color: #212529;" class="file-input w-full md:w-1/2 max-w-auto"/>
+        </div>
+        <div class="container-flex mt-4">
+            <textarea id="query-input" style="background-color: #212529; font-weight: 600; font-size: medium;" class="textarea textarea-bordered w-full" placeholder="What do you want from your data? The Answer will be in the form of a table"></textarea>
+        </div>
+        <div class="mt-3 button-group">
+            <button id="get-results-btn" style="color: aquamarine;" class="btn btn">Get Results</button>
+        </div>
+        <div id="reviewMarkdown" class="markdown-display"></div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('get-results-btn').addEventListener('click', function() {
+        const fileInput = document.getElementById('file-input').files[0];
+        const queryInput = document.getElementById('query-input').value;
+        
+        if (fileInput && queryInput) {
+            const formData = new FormData();
+            formData.append('file', fileInput);
+            formData.append('query', queryInput);
+            
+            fetch("{% url 'query_builder' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result) {
+                    const resultContainer = document.getElementById('reviewMarkdown');
+                    resultContainer.innerHTML = JSON.stringify(data.result, null, 2);
+                    resultContainer.style.display = 'block';
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        } else {
+            alert('Please upload a file and enter a query.');
+        }
+    });
+</script>
+
+{% endblock body %}

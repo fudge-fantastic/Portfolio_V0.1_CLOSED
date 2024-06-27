@@ -47,7 +47,9 @@ button:hover {
                 </div>
                 <h2 class="title-font text-2xl font-medium mt-0 mb-3">Query Builder</h2>
                 <p class="leading-relaxed text-base">Built a Query Builder that takes your dataset, throws any question at the LLM of your choice, and wrings out the answers from the database.</p>
-                <button class="flex mx-auto border-0 py-2 px-5 focus:outline-none rounded text-lg mt-6">Click here</button>
+                <a href="{% url 'query_builder' %}">
+                    <button class="flex mx-auto border-0 py-2 px-5 focus:outline-none rounded text-lg mt-6">Click here</button>
+                </a>
             </div>
         </div>
     </div>
