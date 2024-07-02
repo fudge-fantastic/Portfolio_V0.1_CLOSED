@@ -73,6 +73,7 @@
         <div id="reviewMarkdown" class="markdown-display"></div>
         <div style="color: #ffcc00; font-weight: bold;" id="showError" class="markdown-display"></div>
     </div>
+
 </section>
 
 <!-- jQuery -->
@@ -82,7 +83,6 @@
 <!-- Showdown JS -->
 <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
 
 <script>
     function toggleDropdown() {
@@ -106,7 +106,70 @@
     }
 
     function compareResume() {
-        // Implement your logic for comparing resumes here
+    const selectedModel = document.getElementById('modelDropdown').dataset.model;
+    const resumeFile = document.getElementById('resume').files[0];
+    const jobDescription = document.getElementById('jobDescription').value;
+
+    if (!selectedModel && !resumeFile && !jobDescription) {
+        const errorMessage = "You need to select a Model, upload a Resume, and provide a Job Description to proceed.";
+        displayErrorMessage(errorMessage);
+        return;
+    } else if (!selectedModel) {
+        const errorMessage = 'Pick a Model already if you wanna move forward';
+        displayErrorMessage(errorMessage);
+        return;
+    } else if (!resumeFile) {
+        const errorMessage = 'Drop in a Resume to keep things rolling.';
+        displayErrorMessage(errorMessage);
+        return;
+    } else if (!jobDescription) {
+        const errorMessage = 'Provide a Job Description to complete the comparison.';
+        displayErrorMessage(errorMessage);
+        return;
+    }
+
+    // Reset error message display
+    document.getElementById('showError').style.display = 'none';
+    document.getElementById('showError').innerHTML = '';
+
+    const formData = new FormData();
+    formData.append('selected_model', selectedModel);
+    formData.append('resume', resumeFile);
+    formData.append('job_description', jobDescription);
+
+    // Fetch CSRF token from the cookie
+    const csrftoken = getCookie('csrftoken');
+    fetch('{% url "compare" %}', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken // Include CSRF token in headers
+        },
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // Handle JSON response
+    })
+    .then(data => {
+        if (data.comparison) {
+            // Convert plain text to markdown
+            const converter = new showdown.Converter();
+            const html = converter.makeHtml(data.comparison);
+            // Display the HTML content
+            displayMarkdownReview(html);
+    
+            document.getElementById('copyButton').style.display = 'inline-block';
+            document.getElementById('reviewMarkdown').style.display = 'block';    
+        } else if (data.error) {
+            console.error('Error:', data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle error display or logging
+    });
     }
 
     function reviewResume() {

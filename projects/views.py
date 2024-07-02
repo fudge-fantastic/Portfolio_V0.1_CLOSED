@@ -13,6 +13,7 @@ import google.generativeai as genai
 from django.utils.html import mark_safe
 from django.views.decorators.csrf import csrf_exempt
 import pandas as pd
+from pandasql import sqldf as pysql
 import os
 
 from projects.query_builder.main import get_llama_assistance_qb
@@ -33,6 +34,9 @@ def projects(request):
 
 def connect(request):
     return render(request, "connect.html")
+
+def thank_you(request):
+    return render(request, "thankyou.html")
 
 # Projects Pages
 def machine_learning(request):
@@ -207,16 +211,7 @@ def view_resume_content(request):
             else:
                 return HttpResponseBadRequest("Unsupported file format. Please upload a PDF or DOCX file.")
 
-            # Save structured resume text to a file
-            FILENAME = "structured_resume.txt"
-            with open(FILENAME, 'w') as f:
-                f.write(structured_text)
-
-            # Serve the file as a response
-            with open(FILENAME, 'r') as f:
-                response = HttpResponse(f.read(), content_type='text/plain')
-                response['Content-Disposition'] = f'attachment; filename="{FILENAME}"'
-            return response
+            return JsonResponse({'structured_text': structured_text})
 
         except Exception as e:
             return HttpResponseBadRequest(f"Error processing the resume: {str(e)}")
@@ -236,28 +231,24 @@ def get_query(request):
         query = request.POST.get('query')
         
         if file and query:
-            # Create a temporary SQLite database
-            conn = sqlite3.connect(':memory:')
             df = pd.read_csv(file)
-            df.to_sql('data', conn, index=False, if_exists='replace')
-            
             columns_info = df.dtypes.to_dict()
-            formatted_metadata = "\n".join([f"{col}: {dtype}" for col, dtype in columns_info.items()])
+            categorical_columns = df.select_dtypes(include=['object', 'category']).columns
+            unique_values = {col: df[col].value_counts().head(10).index.tolist() for col in categorical_columns}
+            formatted_metadata = "\n".join([f"{col}: {dtype} (unique values: {unique_values.get(col, 'N/A')})" for col, dtype in columns_info.items()])
             
             # Get the SQL query from LLM
             sql_query = get_llama_assistance_qb(query, formatted_metadata)
             
             try:
-                # Execute the SQL query
-                result_df = pd.read_sql_query(sql_query, conn)
-                conn.close()
+                # Execute the SQL query using pandasql
+                result_df = pysql(sql_query, locals())
                 
                 # Convert the result to JSON
                 result_json = result_df.to_json(orient='records')
                 
                 return JsonResponse({'result': json.loads(result_json)})
             except Exception as e:
-                conn.close()
                 return JsonResponse({'error': str(e)}, status=400)
     
     return JsonResponse({'error': 'Invalid request'}, status=400)
