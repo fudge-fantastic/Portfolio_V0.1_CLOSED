@@ -4,10 +4,6 @@ https://stackblitz.com/
 Make sure to paste the CDN for any UI library
 https://lottiefiles.com/animations/bkash-logo-loading-animation-2Ct21jeoIe?from=search
 
-# Users
-https://lottiefiles.com/6h9dptmdy6
-https://lottiefiles.com/ego
-
 # TODO
 1. Fix the index containers
 2. Add mroe info in the about me
