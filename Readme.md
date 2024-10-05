@@ -97,3 +97,7 @@ python manage.py migrate
 ### Django txt
 1. Create a base.html file and write the code for the header (NavBar) and footer.
 2. Make sure you have installed the django txt
+
+
+### Note
+You can clone this repository and use it. But ensure you have all the files in the right place.
