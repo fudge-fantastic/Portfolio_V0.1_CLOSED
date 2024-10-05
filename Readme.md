@@ -101,3 +101,8 @@ python manage.py migrate
 
 ### Note
 You can clone this repository and use it. But ensure you have all the files in the right place.
+
+---
+<br><br>
+
+__*Closing Repository*__ 
