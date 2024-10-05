@@ -3,4 +3,5 @@ venv
 node_modules
 *.csv
 .env
+*.pdf
 # static
