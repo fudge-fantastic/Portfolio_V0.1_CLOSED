@@ -10,7 +10,7 @@ When browser requests the URL, following steps are taken place:
 - The template contains HTML and Django tags, and with the data it returns finished HTML content back to the browser.
 
 
-## Steps
+### Steps
 - Create Venv
 - Install Django, check version [django-admin --version]
 - Create Project [django-admin startproject <Project_Name>]
